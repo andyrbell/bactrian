@@ -5,7 +5,7 @@
          http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
          http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
-    <camelContext xmlns="http://camel.apache.org/schema/spring" id="myContextId">
+    <camelContext xmlns="http://camel.apache.org/schema/spring" id="testContextId">
         <endpoint id="testExchange" uri="rabbitmq://localhost:5671/myExchange?connectionFactory=#myConnectionFactory&amp;skipQueueDeclare=true"/>
         <endpoint id="outQueue" uri="rabbitmq://localhost:5671/myExchange?connectionFactory=#myConnectionFactory&amp;queue=myQueue"/>
 
