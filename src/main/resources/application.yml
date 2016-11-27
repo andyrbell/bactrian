@@ -1,0 +1,14 @@
+---
+
+camel:
+  springboot:
+    name: andys
+
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5671
+    addresses: localhost:5671
+    useSsl: true
+    sslPropertiesLocation: file:src/main/resources/rabbitSSL.properties
+    sslAlgorithm: TLSv1.1
