@@ -12,7 +12,7 @@ import org.springframework.test.context.ContextConfiguration;
 
 @RunWith(CamelSpringBootRunner.class)
 @SpringBootTest(classes = WorkflowMain.class)
-@ContextConfiguration
+//@ContextConfiguration
 public class MyFirstRouteTest {
 
 
@@ -20,7 +20,7 @@ public class MyFirstRouteTest {
     CamelContext camelContext;
 
 
-    @EndpointInject(uri="timer:trigger")
+    @EndpointInject(ref="testExchange")
     Endpoint trigger;
 
     @Test
