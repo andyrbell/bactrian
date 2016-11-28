@@ -9,6 +9,8 @@ spring:
     host: localhost
     port: 5671
     addresses: localhost:5671
-    useSsl: true
+    useSsl: false
     sslPropertiesLocation: file:src/main/resources/rabbitSSL.properties
     sslAlgorithm: TLSv1.1
+    username: guest
+    password: guest

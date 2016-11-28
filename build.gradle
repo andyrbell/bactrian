@@ -295,6 +295,7 @@ dependencies {
 
     compile 'org.projectlombok:lombok:1.16.8'
     compile 'org.springframework.amqp:spring-rabbit'
+    compile 'org.apache.camel:camel-jsonpath'
 
     testCompile 'junit:junit:4.12'
     testCompile 'org.apache.camel:camel-test-spring'

@@ -5,18 +5,19 @@
          http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
          http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
-    <camelContext xmlns="http://camel.apache.org/schema/spring" id="testContextId">
+    <camelContext xmlns="http://camel.apache.org/schema/spring" id="myContextId">
         <endpoint id="testExchange" uri="rabbitmq://localhost:5671/myExchange?connectionFactory=#myConnectionFactory&amp;skipQueueDeclare=true"/>
-        <endpoint id="outQueue" uri="rabbitmq://localhost:5671/myExchange?connectionFactory=#myConnectionFactory&amp;queue=myQueue"/>
+        <endpoint id="outQueue" uri="rabbitmq://localhost:5671/myExchange_OUT?connectionFactory=#myConnectionFactory&amp;queue=myQueue"/>
 
         <route>
-            <from uri="timer:hello?period=1000"/>
-            <to ref="testExchange"/>
-        </route>
-
-        <route>
-            <from ref="outQueue"/>
-            <to uri="log:out"/>
+            <!--<from ref="testExchange"/>-->
+            <from uri="direct:start"/>
+            <choice>
+                <when>
+                    <jsonpath>$.foo[?(@.bar=='fizzbuzz')]</jsonpath>
+                    <to ref="outQueue"/>
+                </when>
+            </choice>
         </route>
 
     </camelContext>
